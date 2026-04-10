@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6633a0b3627c957439b066d1abdee3bd
+guid: 1cd57a795ff12f048a214d0233833f2e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7145198348311737387
-    second: Sprite-0002_0
+      213: -7752837607776631102
+    second: Arcade - Pac-Man - Miscellaneous - General Sprites_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite-0002_0
+      name: Arcade - Pac-Man - Miscellaneous - General Sprites_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 42
-        height: 32
+        width: 680
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b2434d87a08d82360800000000000000
-      internalID: 7145198348311737387
+      spriteID: 2c64f23a543686490800000000000000
+      internalID: -7752837607776631102
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sprite-0002_0: 7145198348311737387
+      Arcade - Pac-Man - Miscellaneous - General Sprites_0: -7752837607776631102
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
