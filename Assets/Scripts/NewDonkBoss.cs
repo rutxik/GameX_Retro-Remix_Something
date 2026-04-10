@@ -18,6 +18,9 @@ public class NewDonkBoss : MonoBehaviour
     public Sprite[] sprites;
     public Transform BarrelRightSpot;
     public Transform BarrelLeftSpot;
+    public AudioSource audioSource;
+    public AudioClip Slam_Sound;
+    public AudioClip dk_hurt;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -61,7 +64,9 @@ public class NewDonkBoss : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
         dksprite.sprite = sprites[2];
         transform.DOMoveY(GroundLevelAndLeftBoundary.position.y, 0.3f).SetEase(Ease.OutBack);
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.2f);
+        audioSource.PlayOneShot(Slam_Sound);
+        yield return new WaitForSeconds(0.2f);
         attacking = false;
         dksprite.sprite = sprites[1];
     }
@@ -107,6 +112,7 @@ public class NewDonkBoss : MonoBehaviour
 
     IEnumerator TakeDamage(int damage)
     {
+        audioSource.PlayOneShot(dk_hurt);
         health -= damage;
         dksprite.DOFade(0,0);
         Time.timeScale = 0;

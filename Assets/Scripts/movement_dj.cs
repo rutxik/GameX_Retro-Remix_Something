@@ -34,6 +34,10 @@ public class movement_dj : MonoBehaviour
     public Transform hammerafterattackingposition;
     public GameObject playerattack;
     public bool invincible;
+    public AudioClip hurt;
+    public AudioClip jump;
+    public AudioClip hammer_attack;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -115,6 +119,7 @@ public class movement_dj : MonoBehaviour
 
     void Jump()
     {
+        audioSource.PlayOneShot(jump);
         JumpTimer = 20;
         Jumping = true;
         PlayerRigidBody.linearVelocity = new Vector2(PlayerRigidBody.linearVelocity.x, JumpHeight);
@@ -156,6 +161,7 @@ public class movement_dj : MonoBehaviour
     IEnumerator hammerattack()
     {
         attacking = true;
+        audioSource.PlayOneShot(hammer_attack);
         playerattack.SetActive(true);
         hammer.SetActive(true);
         hammer.transform.DORotate(hammerafterattackingposition.rotation.eulerAngles,0.3f).SetEase(Ease.InOutBack);
@@ -176,6 +182,7 @@ public class movement_dj : MonoBehaviour
     {
         Health -= damage;
         invincible = true;
+        audioSource.PlayOneShot(hurt);
         sr.DOFade(0, 0);
         Time.timeScale = 0f;    
         yield return new WaitForSecondsRealtime(0.1f);
