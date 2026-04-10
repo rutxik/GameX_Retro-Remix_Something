@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3525647003263056055}
   - component: {fileID: 6071331447003197108}
   - component: {fileID: 8652268988782196984}
-  - component: {fileID: 2986579752426539106}
   - component: {fileID: -3523421287801312774}
   m_Layer: 8
   m_Name: Explosive_Barrel
@@ -158,30 +157,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2986579752426539106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036076021784566891}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eb5f8c90d180c747a517e48f2ba9e4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ExplosiveBarrelController
-  lifetime: 8
-  playerDamage: 5
-  rollSpeed: 5
-  explosionRadius: 2.5
-  explosionDamage: 20
-  explosionVFX: {fileID: 0}
-  parryReturnSpeed: 14
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  owner: {fileID: 0}
-  canBeParried: 1
 --- !u!114 &-3523421287801312774
 MonoBehaviour:
   m_ObjectHideFlags: 0

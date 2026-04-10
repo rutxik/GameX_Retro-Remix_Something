@@ -6,7 +6,7 @@ using System.Diagnostics.Contracts;
 public class NewDonkBoss : MonoBehaviour
 {
     public float MaxHealth;
-    float health;
+    public float health;
     public Transform GroundLevelAndLeftBoundary;
     public Transform JumpLevelAndRightBoundary;
     float TargetXLevel;
@@ -23,6 +23,7 @@ public class NewDonkBoss : MonoBehaviour
     void Start()
     {
         StartCoroutine(JumpStompAttack());
+        health = MaxHealth;
     }
 
     // Update is called once per frame
@@ -91,6 +92,27 @@ public class NewDonkBoss : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         dksprite.sprite = sprites[1];
         attacking = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 14)
+        {
+            collision.gameObject.SetActive(false);
+            StartCoroutine(TakeDamage(10));
+            print(health);
+        }
+    }
+
+
+    IEnumerator TakeDamage(int damage)
+    {
+        health -= damage;
+        dksprite.DOFade(0,0);
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.1f);
+        Time.timeScale = 1;
+        dksprite.DOFade(1, 0);
     }
 
 }

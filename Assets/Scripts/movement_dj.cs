@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class movement_dj : MonoBehaviour
     public BoxCollider2D GroundCheckCol;
     //public Sprite[] sprites;
     //public GameObject jumps;
-    //public SpriteRenderer jumpsr;
+    public SpriteRenderer sr;
     //public GameObject idles;
     //public GameObject runs;
     bool grounded;
@@ -27,10 +28,17 @@ public class movement_dj : MonoBehaviour
     public Slider healthbar;
     bool CanDoubleJump;
     bool buffered;
+    public GameObject hammer;
+    bool attacking;
+    public Transform hammerbeforeattackingposition;
+    public Transform hammerafterattackingposition;
+    public GameObject playerattack;
+    public bool invincible;
 
     // Start is called before the first frame update
     void Start()
     {
+        invincible = false;
         Health = MaxHealth - 10;
         CanDoubleJump = true;
     }
@@ -43,6 +51,11 @@ public class movement_dj : MonoBehaviour
         CheckJumpStart();
 
         CheckJumpEnd();
+
+        if (Input.GetMouseButtonDown(0) && !attacking)
+        {
+            StartCoroutine(hammerattack());
+        }
     }
 
     private void FixedUpdate()
@@ -139,6 +152,46 @@ public class movement_dj : MonoBehaviour
 
         JumpTimer--;
     }
+
+    IEnumerator hammerattack()
+    {
+        attacking = true;
+        playerattack.SetActive(true);
+        hammer.SetActive(true);
+        hammer.transform.DORotate(hammerafterattackingposition.rotation.eulerAngles,0.3f).SetEase(Ease.InOutBack);
+        yield return new WaitForSeconds(0.3f);
+        hammer.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        hammer.transform.rotation = hammerbeforeattackingposition.rotation;
+        playerattack.SetActive(false);
+        attacking = false;
+    }
+
+    public void TakeDamageFunc(int damage)
+    {
+        StartCoroutine(TakeDamage(damage));
+    }
+
+    IEnumerator TakeDamage(int damage)
+    {
+        Health -= damage;
+        invincible = true;
+        sr.DOFade(0, 0);
+        Time.timeScale = 0f;    
+        yield return new WaitForSecondsRealtime(0.1f);
+        Time.timeScale = 1;
+        sr.DOFade(1, 0);
+        yield return new WaitForSecondsRealtime(0.1f);
+        sr.DOFade(0, 0); 
+        yield return new WaitForSecondsRealtime(0.1f);
+        sr.DOFade(1, 0);
+        yield return new WaitForSecondsRealtime(0.1f);
+        sr.DOFade(0, 0); 
+        yield return new WaitForSecondsRealtime(0.1f);
+        sr.DOFade(1, 0);
+        invincible = false;
+    }
+
     /*
     void UpdateAnimation()
     {

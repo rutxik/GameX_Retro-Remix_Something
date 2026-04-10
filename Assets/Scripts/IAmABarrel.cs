@@ -19,12 +19,14 @@ public class IAmABarrel : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 6)
         {
-            movement_dj.Health -= ThisIsMyDamageCount;
+            if (collision.gameObject.GetComponent<movement_dj>().invincible) return;
+            collision.gameObject.GetComponent<movement_dj>().TakeDamageFunc(ThisIsMyDamageCount);
             Destroy(this.gameObject);
         }
     }
+
 }
