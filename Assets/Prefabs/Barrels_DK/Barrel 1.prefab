@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8891389744032116055, guid: 124650ccfa37a1d4488e4d0b8d5d1062, type: 3}
+  m_Sprite: {fileID: 4119968334944448570, guid: 124650ccfa37a1d4488e4d0b8d5d1062, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,6 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IAmABarrel
   ThisIsMyDamageCount: 10
   AndThisIsWhetherIllExplode: 0
+  TickThisOneIfIAmNotActuallyABarrelAndIGoLeft: 1
+  TickThisOneIfIAmNotActuallyABarrelAndIGoRight: 0
 --- !u!70 &9210418112510302071
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
