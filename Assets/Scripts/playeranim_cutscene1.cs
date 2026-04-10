@@ -17,16 +17,33 @@ public class playeranim_cutscene1 : MonoBehaviour
     {
         // 1. Move to the X axis (Right) a little
         // Parameters: (Direction, Duration)
-        yield return StartCoroutine(MoveInDirection(Vector2.right, 1.0f));
+        yield return StartCoroutine(MoveInDirection(Vector2.right, 0.57f));
         yield return new WaitForSeconds(pauseBetweenSteps);
 
 
-        yield return StartCoroutine(MoveInDirection(new Vector2(1, -1).normalized, 0.8f));
+
+        yield return StartCoroutine(MoveInDirection(new Vector2(1, -1).normalized, 0.2f));
         yield return new WaitForSeconds(pauseBetweenSteps);
+
+        // 1. Move to the X axis (Right) a little
+        // Parameters: (Direction, Duration)
+        yield return StartCoroutine(MoveInDirection(Vector2.right, 0.1f));
+        yield return new WaitForSeconds(pauseBetweenSteps);
+
+
+
+        yield return StartCoroutine(MoveInDirection(new Vector2(1, -1).normalized, 0.2f));
+        yield return new WaitForSeconds(pauseBetweenSteps);
+
+        yield return StartCoroutine(MoveInDirection(Vector2.right, 0.3f));
+        yield return new WaitForSeconds(pauseBetweenSteps);
+
         // 2. Move diagonally top-left
         // Vector2(-1, 1) represents left and up
         yield return StartCoroutine(MoveInDirection(new Vector2(1, 1).normalized, 0.8f));
-        yield return new WaitForSeconds(pauseBetweenSteps);
+        yield return new WaitForSeconds(4.0f);
+
+
 
         // 3. Move to the left
         yield return StartCoroutine(MoveInDirection(Vector2.right, 1.2f));

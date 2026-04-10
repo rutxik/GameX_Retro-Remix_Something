@@ -21,6 +21,8 @@ public class NewDonkBoss : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip Slam_Sound;
     public AudioClip dk_hurt;
+    public GameObject leftswoosh;
+    public GameObject rightswoosh;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -66,6 +68,10 @@ public class NewDonkBoss : MonoBehaviour
         transform.DOMoveY(GroundLevelAndLeftBoundary.position.y, 0.3f).SetEase(Ease.OutBack);
         yield return new WaitForSeconds(0.2f);
         audioSource.PlayOneShot(Slam_Sound);
+        Instantiate(rightswoosh, (BarrelRightSpot.position + BarrelLeftSpot.position)/2, Quaternion.Euler(Vector3.zero)).GetComponent<Rigidbody2D>().linearVelocity = new Vector2(10, 0);
+        Instantiate(leftswoosh, (BarrelRightSpot.position + BarrelLeftSpot.position) / 2, Quaternion.Euler(Vector3.zero)).GetComponent<Rigidbody2D>().linearVelocity = new Vector2(-10, 0);
+        CameraMovement.shakeamount = 1;
+        CameraMovement.startTime = Time.time;
         yield return new WaitForSeconds(0.2f);
         attacking = false;
         dksprite.sprite = sprites[1];
