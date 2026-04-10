@@ -37,7 +37,7 @@ public class NewDonkBoss : MonoBehaviour
             }
             if (randomnumber == 1)
             {
-                if (transform.position.x - Player.transform.position.x > 0)
+                if (transform.position.x - Player.transform.position.x < 0)
                 {
                     StartCoroutine(BarrelThrowAttackRIghtNotExplosive());
                 }
@@ -73,8 +73,8 @@ public class NewDonkBoss : MonoBehaviour
         dksprite.sprite = sprites[9];
         yield return new WaitForSeconds(0.4f);
         dksprite.sprite = sprites[5];
-        yield return new WaitForSeconds(0.3f);
         Instantiate(Barrel, BarrelRightSpot.position, Quaternion.Euler(Vector3.zero)).GetComponent<Rigidbody2D>().linearVelocity = new Vector2(10,0);
+        yield return new WaitForSeconds(0.3f);
         dksprite.sprite = sprites[1];
         attacking = false;
     }
@@ -87,8 +87,8 @@ public class NewDonkBoss : MonoBehaviour
         dksprite.sprite = sprites[9];
         yield return new WaitForSeconds(0.4f);
         dksprite.sprite = sprites[0];
+        Instantiate(Barrel, BarrelLeftSpot.position, Quaternion.Euler(Vector3.zero)).GetComponent<Rigidbody2D>().linearVelocity = new Vector2(-10,0);
         yield return new WaitForSeconds(0.3f);
-        Instantiate(Barrel, BarrelRightSpot.position, Quaternion.Euler(Vector3.zero)).GetComponent<Rigidbody2D>().linearVelocity = new Vector2(-10,0);
         dksprite.sprite = sprites[1];
         attacking = false;
     }
