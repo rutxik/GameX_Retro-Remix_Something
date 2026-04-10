@@ -118,7 +118,7 @@ public class movement_dj : MonoBehaviour
 
     void UpdateHealthbar()
     {
-        healthbar.value = (Health + 10) / MaxHealth;
+        healthbar.value = (Health + 10) / 110f;
         if (Health < 10) SceneManager.LoadScene(0);
     }
 
