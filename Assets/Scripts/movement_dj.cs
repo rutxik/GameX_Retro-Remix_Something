@@ -8,6 +8,7 @@ public class movement_dj : MonoBehaviour
 {
 
     public Rigidbody2D PlayerRigidBody;
+    public BoxCollider2D GroundCheckCol;
     //public Sprite[] sprites;
     //public GameObject jumps;
     //public SpriteRenderer jumpsr;
@@ -25,6 +26,7 @@ public class movement_dj : MonoBehaviour
     int JumpTimer;
     public Slider healthbar;
     bool CanDoubleJump;
+    bool buffered;
 
     // Start is called before the first frame update
     void Start()
@@ -57,9 +59,12 @@ public class movement_dj : MonoBehaviour
 
     void CheckGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 1.5f,GroundLayer);
-        grounded = hit;
-        CanDoubleJump = true;
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 0.6f,GroundLayer);
+        grounded = GroundCheckCol.IsTouchingLayers(GroundLayer);
+        if (grounded)
+        {
+            CanDoubleJump = true;
+        }
     }
 
     void CheckJumpStart()

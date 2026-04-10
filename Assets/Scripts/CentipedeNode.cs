@@ -54,7 +54,7 @@ public class CentipedeNode : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P) && thisistheonethatisgoingtobeseparatedwhenyoupressp)
         {
             split();
-        }
+        } 
     }
 
 
