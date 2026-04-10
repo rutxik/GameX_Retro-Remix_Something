@@ -25,7 +25,6 @@ public class movement_dj : MonoBehaviour
     int JumpTimer;
     public Slider healthbar;
     bool CanDoubleJump;
-    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -61,8 +60,6 @@ public class movement_dj : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 1.5f,GroundLayer);
         grounded = hit;
         CanDoubleJump = true;
-        anim.SetBool("isJumping", false);
-        anim.SetBool("isDoubleJumping", false);
     }
 
     void CheckJumpStart()
@@ -70,14 +67,11 @@ public class movement_dj : MonoBehaviour
         if (grounded && isJumpInputDown())
         {
             Jump();
-            
         }
         else if (CanDoubleJump && isJumpInputDown())
         {
             Jump();
             CanDoubleJump = false;
-            anim.SetBool("isDoubleJumping", true);
-            anim.SetBool("isJumping", false);
         }
     }
 
@@ -88,8 +82,6 @@ public class movement_dj : MonoBehaviour
             if (isJumpInput())
             {
                 Jumping = true;
-                anim.SetBool("isJumping", true);
-                anim.SetBool("isDoubleJumping", false);
             }
             else
             {
