@@ -1,6 +1,7 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
-using DG.Tweening;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem.XR;
 
 public class GhostBoss : MonoBehaviour
@@ -49,6 +50,29 @@ public class GhostBoss : MonoBehaviour
         }
         yield return new WaitForSeconds(5);
         attacking = false;
+    }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 14 && !invisible)
+        {
+            collision.gameObject.SetActive(false);
+            StartCoroutine(TakeDamage(10));
+            print(Health);
+        }
+    }
+
+
+    IEnumerator TakeDamage(int damage)
+    {
+        Health -= damage;
+        GhostSprite.DOFade(0, 0);
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.1f);
+        Time.timeScale = 1;
+        GhostSprite.DOFade(0.5f, 0);
     }
 
 }

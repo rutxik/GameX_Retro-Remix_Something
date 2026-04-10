@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SmallGhost : MonoBehaviour
@@ -81,5 +82,21 @@ public class SmallGhost : MonoBehaviour
             case 2: spriterenderer.sprite = lookdown[1]; break;
             case 3: spriterenderer.sprite = lookleft[1]; break;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 14)
+        {
+            StartCoroutine(DEATH());
+        }
+    }
+
+    IEnumerator DEATH()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.1f);
+        Time.timeScale = 1;
+        Destroy(gameObject);
     }
 }

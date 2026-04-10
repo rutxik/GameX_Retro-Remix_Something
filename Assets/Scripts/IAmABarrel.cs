@@ -23,7 +23,7 @@ public class IAmABarrel : MonoBehaviour
             
             transform.DOMove(startpos + new Vector3(1, 0, 0),0.5f).SetEase(Ease.OutCubic);
             gameObject.GetComponent<SpriteRenderer>().DOFade(0,0.5f);
-            Destroy(gameObject, 2);
+            Destroy(gameObject, 0.5f);
             Destroy(gameObject.GetComponent<Rigidbody2D>());
 
         }
@@ -31,7 +31,7 @@ public class IAmABarrel : MonoBehaviour
         {
             transform.DOMove(startpos + new Vector3(-1, 0, 0),0.5f).SetEase(Ease.OutCubic);
             gameObject.GetComponent<SpriteRenderer>().DOFade(0,0.5f);
-            Destroy(gameObject, 2);
+            Destroy(gameObject, 0.5f);
             Destroy(gameObject.GetComponent<Rigidbody2D>());
         }
     }

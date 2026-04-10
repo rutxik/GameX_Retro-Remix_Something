@@ -199,6 +199,15 @@ public class movement_dj : MonoBehaviour
         invincible = false;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 9 && !attacking)
+        {
+            TakeDamageFunc(10);
+            Destroy(collision.transform.parent.gameObject);
+        }
+    }
+
     /*
     void UpdateAnimation()
     {

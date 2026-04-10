@@ -53,6 +53,7 @@ public class playeranim_cutscene1 : MonoBehaviour
         textbox.SetActive(false);
         
 
+
         // 3. Move to the left
         yield return StartCoroutine(MoveInDirection(Vector2.right, 1.2f));
         yield return new WaitForSeconds(pauseBetweenSteps);
