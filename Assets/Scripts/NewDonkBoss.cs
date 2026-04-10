@@ -16,6 +16,8 @@ public class NewDonkBoss : MonoBehaviour
     public movement_dj Player;
     public SpriteRenderer dksprite;
     public Sprite[] sprites;
+    public Transform BarrelRightSpot;
+    public Transform BarrelLeftSpot;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,7 +37,7 @@ public class NewDonkBoss : MonoBehaviour
             }
             if (randomnumber == 1)
             {
-                StartCoroutine(BarrelThrowAttack());
+                StartCoroutine(BarrelThrowAttackRIghtNotExplosive());
             }
         }
     }
@@ -56,7 +58,7 @@ public class NewDonkBoss : MonoBehaviour
         dksprite.sprite = sprites[1];
     }
 
-    IEnumerator BarrelThrowAttack()
+    IEnumerator BarrelThrowAttackRIghtNotExplosive()
     {
         attacking = true;
         dksprite.sprite = sprites[0];
@@ -65,7 +67,9 @@ public class NewDonkBoss : MonoBehaviour
         yield return new WaitForSeconds(1);
         dksprite.sprite = sprites[5];
         yield return new WaitForSeconds(1);
+        Instantiate(Barrel, BarrelRightSpot.position, Quaternion.Euler(Vector3.zero)).GetComponent<Rigidbody2D>().linearVelocity = new Vector2(10,0);
         dksprite.sprite = sprites[1];
         attacking = false;
     }
+
 }

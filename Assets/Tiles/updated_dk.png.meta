@@ -67,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -146,12 +146,12 @@ TextureImporter:
       name: updated_dk_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 133
-        width: 44
-        height: 34
+        x: 4
+        y: 168
+        width: 40
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: updated_dk_1
       rect:
         serializedVersion: 2
-        x: 3
-        y: 167
-        width: 42
-        height: 33
+        x: 54
+        y: 168
+        width: 40
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: updated_dk_2
       rect:
         serializedVersion: 2
-        x: 53
-        y: 167
-        width: 42
-        height: 33
+        x: 100
+        y: 168
+        width: 46
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: updated_dk_3
       rect:
         serializedVersion: 2
-        x: 53
-        y: 133
-        width: 42
-        height: 34
+        x: 152
+        y: 168
+        width: 46
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,12 +234,12 @@ TextureImporter:
       name: updated_dk_4
       rect:
         serializedVersion: 2
-        x: 99
-        y: 167
-        width: 48
-        height: 33
+        x: 0
+        y: 134
+        width: 43
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -256,12 +256,12 @@ TextureImporter:
       name: updated_dk_5
       rect:
         serializedVersion: 2
-        x: 104
-        y: 133
-        width: 45
-        height: 34
+        x: 54
+        y: 134
+        width: 40
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -278,12 +278,12 @@ TextureImporter:
       name: updated_dk_6
       rect:
         serializedVersion: 2
-        x: 151
-        y: 167
-        width: 47
-        height: 33
+        x: 105
+        y: 134
+        width: 43
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,12 +300,12 @@ TextureImporter:
       name: updated_dk_7
       rect:
         serializedVersion: 2
-        x: 14
-        y: 98
-        width: 51
-        height: 34
+        x: 135
+        y: 102
+        width: 49
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -322,12 +322,12 @@ TextureImporter:
       name: updated_dk_8
       rect:
         serializedVersion: 2
-        x: 71
+        x: 15
         y: 99
-        width: 51
-        height: 34
+        width: 49
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -344,12 +344,12 @@ TextureImporter:
       name: updated_dk_9
       rect:
         serializedVersion: 2
-        x: 14
-        y: 62
-        width: 51
-        height: 34
+        x: 79
+        y: 98
+        width: 40
+        height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -366,12 +366,12 @@ TextureImporter:
       name: updated_dk_10
       rect:
         serializedVersion: 2
-        x: 70
-        y: 62
-        width: 51
-        height: 34
+        x: 15
+        y: 63
+        width: 49
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -384,11 +384,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: updated_dk_11
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 60
+        width: 40
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a774e7fc4e2894d9ffb6b460c8bcad
+      internalID: 1867822299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: updated_dk_12
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 65
+        width: 49
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03ded80b9cfd214e89370ece25df51e
+      internalID: -7413963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1ab5fdcd74191dc49a971a2138026bb5
     internalID: 0
     vertices: []
     indices: 
@@ -396,11 +440,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       updated_dk_0: 7562880307348972239
       updated_dk_1: -1311460546629543485
       updated_dk_10: 8727281413493339118
+      updated_dk_11: 1867822299
+      updated_dk_12: -7413963
       updated_dk_2: 6871529044026008297
       updated_dk_3: -8344138331444112584
       updated_dk_4: -2603715536383586332
