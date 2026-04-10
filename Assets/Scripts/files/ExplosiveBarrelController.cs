@@ -135,8 +135,8 @@ public class ExplosiveBarrelController : MonoBehaviour
         Collider2D hit = Physics2D.OverlapCircle(transform.position, explosionRadius, playerLayer);
         if (hit != null)
         {
-            PlayerHealth ph = hit.GetComponent<PlayerHealth>();
-            if (ph != null) ph.TakeDamage(explosionDamage);
+            movement_dj player = hit.GetComponent<movement_dj>();
+            if (player != null) movement_dj.Health -= (int)explosionDamage;
         }
 
         CameraShake.Instance?.Shake(0.3f, 0.4f);
