@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6567141655390234605}
   - component: {fileID: 5160795366320581568}
   - component: {fileID: 3062462272606161988}
-  - component: {fileID: 4388489156855303460}
   - component: {fileID: 3005719397259804672}
+  - component: {fileID: 664367026476110005}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
@@ -121,31 +121,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4388489156855303460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7108452188119040874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4987035683c6eb4e924a1c00a134e1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BarrelController
-  lifetime: 8
-  playerDamage: 15
-  explosionRadius: 2.5
-  explosionDamage: 50
-  explosionVFX: {fileID: 0}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  parryReturnSpeed: 14
-  owner: {fileID: 0}
-  isExplosive: 0
-  canBeParried: 1
-  isRainBarrel: 0
 --- !u!58 &3005719397259804672
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -182,3 +157,25 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.07
+--- !u!114 &664367026476110005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7108452188119040874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee733168cd69dd74c945ec1f7c03391c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalBarrelController
+  lifetime: 8
+  playerDamage: 15
+  rollSpeed: 5
+  parryReturnSpeed: 14
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  owner: {fileID: 0}
+  canBeParried: 1
+  isRainBarrel: 0

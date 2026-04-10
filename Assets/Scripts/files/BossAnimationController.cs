@@ -71,7 +71,7 @@ public class BossAnimationController : MonoBehaviour
     // Animator hashes
     static readonly int HashChestBeat  = Animator.StringToHash("ChestBeat");
     static readonly int HashRainAttack = Animator.StringToHash("RainAttack");
-    static readonly int HashSpeed      = Animator.StringToHash("Speed");
+
 
     bool isDead         = false;
     bool isChestBeating = false;
@@ -105,7 +105,6 @@ public class BossAnimationController : MonoBehaviour
         if (isDead) return;
 
         UpdateFacing();
-        UpdateSpeedParam();
         CheckPhase2Transition();
     }
 
@@ -127,12 +126,6 @@ public class BossAnimationController : MonoBehaviour
 
     // ─────────────────────────────────────────────
     #region Speed Param (optional walk blend)
-
-    void UpdateSpeedParam()
-    {
-        float speed = Mathf.Abs(rb.linearVelocity.x);
-        anim.SetFloat(HashSpeed, speed);
-    }
 
     #endregion
 
