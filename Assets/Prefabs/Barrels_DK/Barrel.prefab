@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3062462272606161988}
   - component: {fileID: 3005719397259804672}
   - component: {fileID: 664367026476110005}
+  - component: {fileID: 2710151098651414381}
   m_Layer: 12
   m_Name: Barrel
   m_TagString: Untagged
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7108452188119040874}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee733168cd69dd74c945ec1f7c03391c, type: 3}
   m_Name: 
@@ -179,3 +180,17 @@ MonoBehaviour:
   owner: {fileID: 0}
   canBeParried: 1
   isRainBarrel: 0
+--- !u!114 &2710151098651414381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7108452188119040874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ff6431b603a1a48bf796da400dff9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IAmABarrel
+  ThisIsMyDamageCount: 10
+  AndThisIsWhetherIllExplode: 0

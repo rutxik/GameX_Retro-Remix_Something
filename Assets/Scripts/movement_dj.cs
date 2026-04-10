@@ -31,7 +31,7 @@ public class movement_dj : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Health = MaxHealth;
+        Health = MaxHealth - 10;
         CanDoubleJump = true;
     }
 
@@ -123,7 +123,8 @@ public class movement_dj : MonoBehaviour
 
     void UpdateHealthbar()
     {
-        healthbar.value = (Health + 10) / 110f;
+        print(Health);
+        healthbar.value = (float)((Health + 10.0) / MaxHealth);
         if (Health < 10) SceneManager.LoadScene(0);
     }
 
