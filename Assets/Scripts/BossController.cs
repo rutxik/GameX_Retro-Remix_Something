@@ -116,6 +116,7 @@ public class BossController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Grounded: " + isGrounded + " ThrowTimer: " + throwTimer);
         if (isDead) return;
 
         CheckGrounded();
@@ -207,9 +208,7 @@ public class BossController : MonoBehaviour
         GameObject barrel = Instantiate(prefab, throwPoint.position, Quaternion.identity);
 
         // Direction toward player with slight upward arc
-        Vector2 dir = ((Vector2)(player.position - throwPoint.position)).normalized;
-        dir += Vector2.up * 0.25f;
-        dir.Normalize();
+        Vector2 dir = new Vector2(player.position.x > transform.position.x ? 1f : -1f, 0f);
 
         // Give the barrel its velocity – works with either Rigidbody2D or a BarrelMover component
         Rigidbody2D barrelRb = barrel.GetComponent<Rigidbody2D>();
