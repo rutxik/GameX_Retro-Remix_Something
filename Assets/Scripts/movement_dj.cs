@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class movement : MonoBehaviour
+public class movement_dj : MonoBehaviour
 {
 
     public Rigidbody2D PlayerRigidBody;
@@ -24,12 +24,14 @@ public class movement : MonoBehaviour
     public static int Health;
     int JumpTimer;
     public Slider healthbar;
+    bool CanDoubleJump;
     private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         Health = MaxHealth;
+        CanDoubleJump = true;
     }
 
     // Update is called once per frame
@@ -58,6 +60,9 @@ public class movement : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(0, -1), 1.5f,GroundLayer);
         grounded = hit;
+        CanDoubleJump = true;
+        anim.SetBool("isJumping", false);
+        anim.SetBool("isDoubleJumping", false);
     }
 
     void CheckJumpStart()
@@ -65,6 +70,14 @@ public class movement : MonoBehaviour
         if (grounded && isJumpInputDown())
         {
             Jump();
+            
+        }
+        else if (CanDoubleJump && isJumpInputDown())
+        {
+            Jump();
+            CanDoubleJump = false;
+            anim.SetBool("isDoubleJumping", true);
+            anim.SetBool("isJumping", false);
         }
     }
 
@@ -75,6 +88,8 @@ public class movement : MonoBehaviour
             if (isJumpInput())
             {
                 Jumping = true;
+                anim.SetBool("isJumping", true);
+                anim.SetBool("isDoubleJumping", false);
             }
             else
             {
@@ -102,8 +117,6 @@ public class movement : MonoBehaviour
     bool isJumpInputDown()
     {
         return Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown(KeyCode.W));
-        anim.SetBool("isJumping", true);
-        anim.SetBool("isDoubleJumping", false);
     }
 
     void AlignRotation()
