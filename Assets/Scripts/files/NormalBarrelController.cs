@@ -9,6 +9,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class NormalBarrelController : MonoBehaviour
 {
+    bool hasHitPlayer = false;
+
+    
     #region Inspector
 
     [Header("General")]
@@ -55,40 +58,17 @@ public class NormalBarrelController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col)
+{
+    if (col.gameObject.CompareTag("Player"))
     {
         if (!isAlive) return;
-
-        // Hit the player
-        if (col.gameObject.CompareTag("Player"))
-        {
-            PlayerHealth ph = col.gameObject.GetComponent<PlayerHealth>();
-            if (ph != null) ph.TakeDamage(playerDamage);
-            Destroy(gameObject);
-            return;
-        }
-
-        // Parried barrel hits the boss
-        if (hasBeenParried && col.gameObject.CompareTag("Boss"))
-        {
-            if (owner != null) owner.TakeParryDamage();
-            Destroy(gameObject);
-            return;
-        }
-
-        // Hit a wall → flip horizontal direction and keep rolling
-        if (col.gameObject.CompareTag("Wall"))
-        {
-            rb.linearVelocity = new Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
-            return;
-        }
-
-        // Hit ground → flatten out and roll at constant speed in same direction
-        if (col.gameObject.CompareTag("Ground"))
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x > 0 ? rollSpeed : -rollSpeed, 0f);
-            return;
-        }
+        isAlive = false;  // ← stops any further collisions immediately
+        movement_dj player = col.gameObject.GetComponent<movement_dj>();
+        if (player != null) movement_dj.Health -= (int)playerDamage;
+        Destroy(gameObject);
+        return;
     }
+}
 
     #endregion
 

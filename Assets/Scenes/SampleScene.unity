@@ -638,7 +638,7 @@ Transform:
   m_GameObject: {fileID: 110435245}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0, y: -0.16, z: 0}
   m_LocalScale: {x: 1, y: 2.63, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1206,8 +1206,8 @@ GameObject:
   - component: {fileID: 705422426}
   - component: {fileID: 705422425}
   - component: {fileID: 705422424}
-  - component: {fileID: 705422427}
   - component: {fileID: 705422429}
+  - component: {fileID: 705422430}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -1382,8 +1382,31 @@ MonoBehaviour:
     m_Bits: 64
   parryDamage: 40
   groundCheckRadius: 0.2
---- !u!70 &705422427
-CapsuleCollider2D:
+--- !u!114 &705422429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705422421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c62cb2082e0d7f49a4a1083d40a18ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossAnimationController
+  chestBeatIntervalMin: 3
+  chestBeatIntervalMax: 7
+  flipSpriteToFacePlayer: 1
+  phase2AnimSpeed: 1.25
+  audioSource: {fileID: 0}
+  chestBeatSFX: {fileID: 0}
+  jumpSFX: {fileID: 0}
+  landSFX: {fileID: 0}
+  throwSFX: {fileID: 0}
+  roarSFX: {fileID: 0}
+  dieSFX: {fileID: 0}
+--- !u!61 &705422430
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1416,32 +1439,18 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.002567649, y: -0.015919447}
-  m_Size: {x: 0.3881611, y: 0.3881611}
-  m_Direction: 0
---- !u!114 &705422429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705422421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c62cb2082e0d7f49a4a1083d40a18ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossAnimationController
-  chestBeatIntervalMin: 3
-  chestBeatIntervalMax: 7
-  flipSpriteToFacePlayer: 1
-  phase2AnimSpeed: 1.25
-  audioSource: {fileID: 0}
-  chestBeatSFX: {fileID: 0}
-  jumpSFX: {fileID: 0}
-  landSFX: {fileID: 0}
-  throwSFX: {fileID: 0}
-  roarSFX: {fileID: 0}
-  dieSFX: {fileID: 0}
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.42, y: 0.33}
+    newSize: {x: 0.47, y: 0.33}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.42, y: 0.33}
+  m_EdgeRadius: 0
 --- !u!1 &740127323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,10 +1710,10 @@ RectTransform:
   - {fileID: 1744797789}
   m_Father: {fileID: 1209453924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1170.1, y: -692}
-  m_SizeDelta: {x: 9.5562, y: 8.1846}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 122, y: -19}
+  m_SizeDelta: {x: 221.8701, y: 22.826996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &939256550
 MonoBehaviour:
@@ -2000,7 +2009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2489,8 +2498,16 @@ PrefabInstance:
       value: Player (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7381342037897192611, guid: d75ff3729b4a11e43b563a56050f332b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381342037897192611, guid: d75ff3729b4a11e43b563a56050f332b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381342037897192611, guid: d75ff3729b4a11e43b563a56050f332b, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7647572799526060554, guid: d75ff3729b4a11e43b563a56050f332b, type: 3}
       propertyPath: MaxHealth
@@ -2610,13 +2627,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosive_Barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 1036076021784566891, guid: 76a337d6665c2fe4c92629a9cf63f265, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4530416736256212506, guid: 76a337d6665c2fe4c92629a9cf63f265, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.742
+      value: 9.04
       objectReference: {fileID: 0}
     - target: {fileID: 4530416736256212506, guid: 76a337d6665c2fe4c92629a9cf63f265, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.177
+      value: 3.37
       objectReference: {fileID: 0}
     - target: {fileID: 4530416736256212506, guid: 76a337d6665c2fe4c92629a9cf63f265, type: 3}
       propertyPath: m_LocalPosition.z
