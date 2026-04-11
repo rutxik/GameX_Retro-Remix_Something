@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 using System.Diagnostics.Contracts;
+using UnityEngine.SceneManagement;
 
 public class NewDonkBoss : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class NewDonkBoss : MonoBehaviour
     public AudioClip dk_hurt;
     public GameObject leftswoosh;
     public GameObject rightswoosh;
+    public AudioSource music;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,6 +54,12 @@ public class NewDonkBoss : MonoBehaviour
                     StartCoroutine(BarrelThrowAttackLeftNotExplosive());
                 }
             }
+        }
+
+        if (health < 0 && !attacking)
+        {
+            StopAllCoroutines();
+            StartCoroutine(death());
         }
     }
 
@@ -125,6 +133,21 @@ public class NewDonkBoss : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.1f);
         Time.timeScale = 1;
         dksprite.DOFade(1, 0);
+    }
+
+    IEnumerator death()
+    {
+        attacking = true;
+        CameraMovement.enabled = false;
+        transform.DOMoveY(JumpLevelAndRightBoundary.position.y, 1f).SetEase(Ease.OutCubic);
+        transform.DORotate(new Vector3(0, 0, 180), 1f).SetEase(Ease.OutCubic);
+        yield return new WaitForSeconds(1);
+        transform.DOMoveY(GroundLevelAndLeftBoundary.position.y, 0.2f).SetEase(Ease.OutBack);
+        transform.DOMoveY(GroundLevelAndLeftBoundary.position.y - 10, 1f).SetEase(Ease.OutBack);
+        Camera.main.transform.DOMoveY(15,1f).SetEase(Ease.OutCubic);
+        music.DOFade(0,1);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(4);
     }
 
 }
