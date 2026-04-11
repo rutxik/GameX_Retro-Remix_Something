@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System.Collections;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,10 +17,25 @@ public class playeranim_cutscene1 : MonoBehaviour
     float starttime;
     public AudioClip text_sound;
     public AudioSource audiosource;
+    public AudioSource a2;
+    public AudioClip bgmaudio;
+    public AudioClip transition;
     void Start()
     {
+        bgm();
         // Start the sequence as soon as the game begins
         StartCoroutine(PlayMoveSequence());
+    }
+
+    void bgm()
+    {
+        a2.clip = bgmaudio;
+        a2.Play();
+    }
+
+    void bgmstop()
+    {
+        a2.Stop(); 
     }
 
     IEnumerator PlayMoveSequence()
@@ -62,8 +78,9 @@ public class playeranim_cutscene1 : MonoBehaviour
         yield return StartCoroutine(MoveInDirection(Vector2.right, 1.2f));
         yield return new WaitForSeconds(pauseBetweenSteps);
         pos = transform.position;
-        
 
+        bgmstop();
+        audiosource.PlayOneShot(transition);
         // 4. Stop
         sr.DOFade(0, 3);
         starttime = Time.time;

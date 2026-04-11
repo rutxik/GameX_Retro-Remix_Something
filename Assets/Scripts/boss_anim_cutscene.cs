@@ -12,7 +12,7 @@ public class boss_anim_cutscene : MonoBehaviour
     public AudioSource source;
     public Transform healthbar;
     public Transform healthbarpos;
-
+    public AudioClip approaching;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,7 +24,8 @@ public class boss_anim_cutscene : MonoBehaviour
 
     IEnumerator Boss_Move()
     {
-        yield return new WaitForSeconds(13.0f);
+        yield return new WaitForSeconds(13.4f);
+        source.PlayOneShot(approaching);
         xpos.DOMoveX(10.08f, 1.5f);
         source.PlayOneShot(clip);
         healthbar.DOMoveY(healthbarpos.position.y, 1.5f).SetEase(Ease.OutCirc);

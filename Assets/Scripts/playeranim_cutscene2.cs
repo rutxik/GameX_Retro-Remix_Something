@@ -16,11 +16,14 @@ public class playeranim_cutscene2: MonoBehaviour
     Vector3 pos;
     bool shaking = false;
     float starttime;
+    public AudioClip clip;
+    public AudioSource AudioSource;
+    public AudioClip transition_sounds;
     void Start()
     {
         textbox.SetActive(false);
         textbox_new.SetActive(false);
-        // Start the sequence as soon as the game begins
+        // Start the sequence as soon as the game 
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
         StartCoroutine(PlayMoveSequence());
         pos = new Vector3(4.5f, 0.5f, 0);
@@ -28,16 +31,21 @@ public class playeranim_cutscene2: MonoBehaviour
 
     IEnumerator PlayMoveSequence()
     {
-         // 4. Stop
+        // 4. Stop
+        AudioSource.PlayOneShot(transition_sounds);
         sr.DOFade(1, 3);
         starttime = Time.time;
         shaking = true;
         yield return new WaitForSeconds(3.0f);
         shaking = false;
+        AudioSource.PlayOneShot(clip);
+        yield return new WaitForSeconds(0.2f);
         textbox.SetActive(true);
         yield return new WaitForSeconds(4.0f);
         textbox.SetActive(false);
         yield return new WaitForSeconds(2.0f);
+        AudioSource.PlayOneShot(clip);
+        yield return new WaitForSeconds(0.2f);
         textbox_new.SetActive(true);
         yield return new WaitForSeconds(4.0f);
         textbox_new.SetActive(false);
