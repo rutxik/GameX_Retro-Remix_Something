@@ -14,6 +14,8 @@ public class playeranim_cutscene1 : MonoBehaviour
     Vector3 pos;
     bool shaking = false;
     float starttime;
+    public AudioClip text_sound;
+    public AudioSource audiosource;
     void Start()
     {
         // Start the sequence as soon as the game begins
@@ -48,6 +50,8 @@ public class playeranim_cutscene1 : MonoBehaviour
         // 2. Move diagonally top-left
         // Vector2(-1, 1) represents left and up
         yield return StartCoroutine(MoveInDirection(new Vector2(1, 1).normalized, 0.8f));
+        audiosource.PlayOneShot(text_sound);
+        yield return new WaitForSeconds(0.2f);
         textbox.SetActive(true);
         yield return new WaitForSeconds(4.0f);
         textbox.SetActive(false);
@@ -65,7 +69,7 @@ public class playeranim_cutscene1 : MonoBehaviour
         starttime = Time.time;
         shaking = true;
         yield return new WaitForSeconds(3.0f);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 
     IEnumerator MoveInDirection(Vector2 direction, float duration)
@@ -83,7 +87,7 @@ public class playeranim_cutscene1 : MonoBehaviour
     {
         if (shaking)
         {
-            player.position = pos + new Vector3(Mathf.Sin((Time.time - starttime) * 10), 0, 0);
+            player.position = pos + new Vector3(Mathf.Sin((Time.time - starttime) * 20), 0, 0);
         }
     }
 }
