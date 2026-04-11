@@ -12,7 +12,9 @@ public class movement_dj : MonoBehaviour
     public BoxCollider2D GroundCheckCol;
     //public Sprite[] sprites;
     //public GameObject jumps;
-    public SpriteRenderer sr;
+    public SpriteRenderer sr1;
+    public SpriteRenderer sr2;
+    public SpriteRenderer sr3;
     //public GameObject idles;
     //public GameObject runs;
     bool grounded;
@@ -38,6 +40,10 @@ public class movement_dj : MonoBehaviour
     public AudioClip jump;
     public AudioClip hammer_attack;
     public AudioSource audioSource;
+    public GameObject idles;
+    public GameObject runs;
+    public GameObject jumps;
+    public GameObject twojumps;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +73,7 @@ public class movement_dj : MonoBehaviour
 
         ApplyVelocity();
 
-        //UpdateAnimation(); //PLEASE change this to like using the animator or something this function SUCKS ASS
+        UpdateAnimation(); //PLEASE change this to like using the animator or something this function SUCKS ASS
 
         AlignRotation();
 
@@ -183,19 +189,31 @@ public class movement_dj : MonoBehaviour
         Health -= damage;
         invincible = true;
         audioSource.PlayOneShot(hurt);
-        sr.DOFade(0, 0);
+        sr1.DOFade(0, 0);
+        sr2.DOFade(0, 0);
+        sr3.DOFade(0, 0);
         Time.timeScale = 0f;    
         yield return new WaitForSecondsRealtime(0.1f);
         Time.timeScale = 1;
-        sr.DOFade(1, 0);
+        sr1.DOFade(1, 0);
+        sr2.DOFade(1, 0);
+        sr3.DOFade(1, 0);
         yield return new WaitForSecondsRealtime(0.1f);
-        sr.DOFade(0, 0); 
+        sr1.DOFade(0, 0);
+        sr2.DOFade(0, 0);
+        sr3.DOFade(0, 0);
         yield return new WaitForSecondsRealtime(0.1f);
-        sr.DOFade(1, 0);
+        sr1.DOFade(1, 0);
+        sr2.DOFade(1, 0);
+        sr3.DOFade(1, 0);
         yield return new WaitForSecondsRealtime(0.1f);
-        sr.DOFade(0, 0); 
+        sr1.DOFade(0, 0);
+        sr2.DOFade(0, 0);
+        sr3.DOFade(0, 0);
         yield return new WaitForSecondsRealtime(0.1f);
-        sr.DOFade(1, 0);
+        sr1.DOFade(1, 0);
+        sr2.DOFade(1, 0);
+        sr3.DOFade(1, 0);
         invincible = false;
     }
 
@@ -208,7 +226,7 @@ public class movement_dj : MonoBehaviour
         }
     }
 
-    /*
+    
     void UpdateAnimation()
     {
         if (grounded && Mathf.Abs(Input.GetAxisRaw("Horizontal")) > 0.1f)
@@ -228,19 +246,7 @@ public class movement_dj : MonoBehaviour
             runs.SetActive(false);
             jumps.SetActive(true);
             idles.SetActive(false);
-            if (PlayerRigidBody.velocity.y > 1f)
-            {
-                jumpsr.sprite = sprites[0];
-            }
-            else if (PlayerRigidBody.velocity.y < -1f)
-            {
-                jumpsr.sprite = sprites[2];
-            }
-            else
-            {
-                jumpsr.sprite = sprites[1];
-            }
         }
     }
-    */
+    
 }
