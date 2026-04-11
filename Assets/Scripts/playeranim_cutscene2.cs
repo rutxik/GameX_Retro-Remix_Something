@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 public class playeranim_cutscene2: MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class playeranim_cutscene2: MonoBehaviour
     public float moveSpeed = 5f;
     public float pauseBetweenSteps = 0.2f;
     public GameObject textbox;
+    public GameObject textbox_new;
     public SpriteRenderer sr;
     public Transform player;
     Vector3 pos;
@@ -16,18 +18,30 @@ public class playeranim_cutscene2: MonoBehaviour
     float starttime;
     void Start()
     {
+        textbox.SetActive(false);
+        textbox_new.SetActive(false);
         // Start the sequence as soon as the game begins
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
         StartCoroutine(PlayMoveSequence());
+        pos = new Vector3(4.5f, 0.5f, 0);
     }
 
     IEnumerator PlayMoveSequence()
     {
          // 4. Stop
-        sr.DOFade(100, 3);
+        sr.DOFade(1, 3);
         starttime = Time.time;
         shaking = true;
         yield return new WaitForSeconds(3.0f);
-        SceneManager.LoadScene(0);
+        shaking = false;
+        textbox.SetActive(true);
+        yield return new WaitForSeconds(4.0f);
+        textbox.SetActive(false);
+        yield return new WaitForSeconds(2.0f);
+        textbox_new.SetActive(true);
+        yield return new WaitForSeconds(4.0f);
+        textbox_new.SetActive(false);
+        //SceneManager.LoadScene(3); //change this as it directly loads the new scene
     }
 
     IEnumerator MoveInDirection(Vector2 direction, float duration)
@@ -45,7 +59,9 @@ public class playeranim_cutscene2: MonoBehaviour
     {
         if (shaking)
         {
-            player.position = pos + new Vector3(Mathf.Sin((starttime - Time.time) * 20), 0, 0);
+            float elapsed = Time.time - starttime;
+            float intensity = Mathf.Clamp01(1 - (elapsed / 3f));
+            player.position = pos + new Vector3(Mathf.Sin(elapsed * 20) * intensity, 0, 0);
         }
     }
 }
