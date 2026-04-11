@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class SmallGhost : MonoBehaviour
     public Sprite[] lookdown;
     int spritechangecounter;
     public int SpriteChangeTimeInFrames;
+    public AudioSource ISoundLikeThisWhenImGettingEaten;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -88,6 +90,7 @@ public class SmallGhost : MonoBehaviour
     {
         if (collision.gameObject.layer == 14)
         {
+            ISoundLikeThisWhenImGettingEaten.Play();
             StartCoroutine(DEATH());
         }
     }
@@ -97,6 +100,9 @@ public class SmallGhost : MonoBehaviour
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(0.1f);
         Time.timeScale = 1;
-        Destroy(gameObject);
+        spriterenderer.DOFade(0, 0);
+        Destroy(transform.GetChild(0).gameObject);
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        Destroy(gameObject,2);
     }
 }

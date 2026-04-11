@@ -19,6 +19,7 @@ public class GhostBoss : MonoBehaviour
     void Start()
     {
         StartCoroutine(GoToPositionAndThenAttack());
+        Health = MaxHealth;
     }
 
     // Update is called once per frame
