@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.SceneManagement;
 
 public class GhostBoss : MonoBehaviour
 {
@@ -74,6 +75,7 @@ public class GhostBoss : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.1f);
         Time.timeScale = 1;
         GhostSprite.DOFade(0.5f, 0);
+        if (Health < 0) SceneManager.LoadScene(5);
     }
 
 }
